@@ -13,6 +13,8 @@ Themes for Awesome WM 4.x
 Description
 ===========
 
+This has been adapted to my liking from https://github.com/lcpz/awesome-copycats.
+
 A set of themes for the Awesome_ window manager, version 4.x.
 
 See branches_ for previous versions.
@@ -47,49 +49,6 @@ Features
 - Non-empty tag browsing
 - On-the-fly useless gaps resize
 - Dynamic tagging
-
-Gallery
-=======
-
-**Multicolor**, inspired by lucamanni_
-
-.. image:: http://dotshare.it/public/images/uploads/650.png
-
-**Powerarrow**, porting of romockee_'s
-
-.. image:: http://dotshare.it/public/images/uploads/1453.png
-
-**Powerarrow Dark**
-
-.. image:: http://dotshare.it/public/images/uploads/649.jpg
-
-**Steamburn**, porting of ok100_'s dwm
-
-.. image:: http://dotshare.it/public/images/uploads/648.png
-
-**Blackburn**
-
-.. image:: http://dotshare.it/public/images/uploads/553.png
-
-**Dremora**
-
-.. image:: http://dotshare.it/public/images/uploads/652.png
-
-**Rainbow**
-
-.. image:: http://dotshare.it/public/images/uploads/606.png
-
-**Holo**, requested by amouly_
-
-.. image:: http://dotshare.it/public/images/uploads/651.jpg
-
-**Copland**, inspired by foozer_
-
-.. image:: http://dotshare.it/public/images/uploads/655.png
-
-**Vertex**, requested by swordfischer_
-
-.. image:: http://dotshare.it/public/images/uploads/1432.jpg
 
 Installation
 ============
