@@ -20,6 +20,7 @@ local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local my_table      = awful.util.table or gears.table -- 4.{0,1} compatibility
 -- }}}
+local xrandr        = require("xrandr")
 
 -- {{{ Error handling
 if awesome.startup_errors then
@@ -327,6 +328,9 @@ globalkeys = my_table.join(
         end,
         {description = "toggle wibox", group = "awesome"}),
 
+    -- Dual Monitor Controls
+    awful.key({ modkey,  }, "g", function() xrandr.xrandr() end),
+
     -- On the fly useless gaps change
     awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end,
               {description = "increment useless gaps", group = "tag"}),
@@ -393,11 +397,40 @@ globalkeys = my_table.join(
     --awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
     --          {description = "show weather", group = "widgets"}),
 
+    --lock button
+
+    --awful.key({ }, "XF86Sleep", function () os.execute(scrlocker) end,
+    --          {description = "lock screen", group = "hotkeys"}),
+
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 10") end,
-              {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 10") end,
-              {description = "-10%", group = "hotkeys"}),
+    awful.key({ }, "XF86MonBrightnessUp", 
+    	function () 
+	    awful.util.spawn("xbacklight -inc 10") 
+	end,
+        {description = "+10%", group = "hotkeys"}
+    ),
+    awful.key({ }, "XF86MonBrightnessDown", 
+    	function () 
+	    awful.util.spawn("xbacklight -dec 10") 
+    	end,
+	{description = "-10%", group = "hotkeys"}
+    ),
+
+    -- Keyboard Brightness
+    awful.key({ }, "XF86KbdBrightnessUp", 
+    	function ()
+	    os.execute("/usr/bin/kbd-brightness up")
+	    --awful.spawn_with_shell("/usr/bin/kbd-brightness up") 
+    	end,
+        {description = "+25 / 255", group = "hotkeys"}
+    ),
+    awful.key({ }, "XF86KbdBrightnessDown", 
+    	function ()
+	    os.execute("/usr/bin/kbd-brightness down") 
+	    --awful.spawn_with_shell("/usr/bin/kbd-brightness down") 
+    	end,
+        {description = "-25 / 255", group = "hotkeys"}
+    ),
 
     -- Mute key control
     awful.key({ }, "XF86AudioMute",
@@ -422,7 +455,7 @@ globalkeys = my_table.join(
         {description = "volume down", group = "hotkeys"}),
     awful.key({ altkey }, "m",
         function ()
-            os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+            os.execute("amixer -q -D pulse sset Master toggle")
             beautiful.volume.update()
         end,
         {description = "toggle mute", group = "hotkeys"}),
