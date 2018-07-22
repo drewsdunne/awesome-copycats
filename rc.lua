@@ -22,6 +22,10 @@ local my_table      = awful.util.table or gears.table -- 4.{0,1} compatibility
 -- }}}
 local xrandr        = require("xrandr")
 
+require("awful.remote")
+-- require("screenful")
+require("displayful")
+
 -- {{{ Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
@@ -403,31 +407,31 @@ globalkeys = my_table.join(
     --          {description = "lock screen", group = "hotkeys"}),
 
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessUp", 
-    	function () 
-	    awful.util.spawn("xbacklight -inc 10") 
+    awful.key({ }, "XF86MonBrightnessUp",
+    	function ()
+	    awful.util.spawn("xbacklight -inc 10")
 	end,
         {description = "+10%", group = "hotkeys"}
     ),
-    awful.key({ }, "XF86MonBrightnessDown", 
-    	function () 
-	    awful.util.spawn("xbacklight -dec 10") 
+    awful.key({ }, "XF86MonBrightnessDown",
+    	function ()
+	    awful.util.spawn("xbacklight -dec 10")
     	end,
 	{description = "-10%", group = "hotkeys"}
     ),
 
     -- Keyboard Brightness
-    awful.key({ }, "XF86KbdBrightnessUp", 
+    awful.key({ }, "XF86KbdBrightnessUp",
     	function ()
 	    os.execute("/usr/bin/kbd-brightness up")
-	    --awful.spawn_with_shell("/usr/bin/kbd-brightness up") 
+	    --awful.spawn_with_shell("/usr/bin/kbd-brightness up")
     	end,
         {description = "+25 / 255", group = "hotkeys"}
     ),
-    awful.key({ }, "XF86KbdBrightnessDown", 
+    awful.key({ }, "XF86KbdBrightnessDown",
     	function ()
-	    os.execute("/usr/bin/kbd-brightness down") 
-	    --awful.spawn_with_shell("/usr/bin/kbd-brightness down") 
+	    os.execute("/usr/bin/kbd-brightness down")
+	    --awful.spawn_with_shell("/usr/bin/kbd-brightness down")
     	end,
         {description = "-25 / 255", group = "hotkeys"}
     ),
